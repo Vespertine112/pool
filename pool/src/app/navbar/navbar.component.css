@@ -1,0 +1,24 @@
+.navbar{
+    background-color: #F1DDBF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-radius: 2em;
+    padding: 1em;
+}
+.navbar a{
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 1vmax;
+    margin: 1em;
+    text-decoration: none;
+    font-weight: 1000;
+    color: #525E75;
+    justify-self: flex-end;
+}
+.navbar ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+}

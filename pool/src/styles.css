@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+/* Pallete
+#3A3845
+#F7CCAC
+#C69B7B
+#826F66
+*/
+/* Poppins Url */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+/* Font-family: 'Poppins' */
+
+:root {
+    --p1:#3A3845;
+    --p2:#F7CCAC;
+    --p3:#C69B7B;
+    --p4:#826F66; 
+}
+
+body{
+    background-color: var(--p1);
+}
+
