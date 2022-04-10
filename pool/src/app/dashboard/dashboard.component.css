@@ -1,0 +1,10 @@
+.dashContainer{
+    font-family: 'Poppins', 'sans-serif';
+    display: flex;
+    flex-direction: column;
+    width: calc(100%-2em);
+    background-color: #C69B7B;
+    margin: 1em;
+    border-radius: 1em;
+    padding: 1em;
+}

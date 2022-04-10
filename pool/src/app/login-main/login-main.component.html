@@ -1,14 +1,27 @@
 <div class="boxContainer">
     
+    <!-- Generate a Pool -->
+    <div class="contentBox">
+        <h1>Create Pool</h1>
+        <em>* This will require you to have an account.</em>
+        <button mat-flat-button (click)="genPool()">Generate Pool</button>
+    </div>
+
+    <!-- Access a Pool -->
     <div class="contentBox">
         <h1>Access Pool</h1>
-        <input type="number" name="poolId" id="poolId">
+        <label for="poolId">Your Pool Id</label>
+        <input type="number" [(ngModel)]="poolId" name="poolId" id="poolId" placeholder="Ex. 1231415" >
+        <button mat-flat-button (click)="poolIdAuth()">Submit</button>
     </div>
+    
+    <!-- Login  -->
     <div class="contentBox">
         <h1>Login</h1>
         <label for="emailAuth">Email</label>
-        <input type="email" name="emailAuth" id="emailAuth">
+        <input type="email" [(ngModel)]="email" name="emailAuth" id="emailAuth" placeholder="Ex. Jonsmith@gmail.com">
         <label for="passAuth">Password</label>
-        <input type="password" name="passAuth" id="passAuth">
-    </div>
+        <input type="password" [(ngModel)]="password" name="passAuth" id="passAuth">
+        <button mat-flat-button (click)="login()">Submit</button>
+    </div>    
 </div>

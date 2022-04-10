@@ -5,17 +5,23 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginMainComponent } from './login-main/login-main.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginMainComponent
+    LoginMainComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatButtonModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

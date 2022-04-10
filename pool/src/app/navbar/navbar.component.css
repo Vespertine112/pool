@@ -6,6 +6,7 @@
     text-align: center;
     border-radius: 2em;
     padding: 1em;
+    width: calc(100%-2em);
 }
 .navbar a{
     font-family: 'Poppins', 'sans-serif';
