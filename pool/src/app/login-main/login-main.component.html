@@ -5,13 +5,14 @@
         <h1>Create Pool</h1>
         <em>* This will require you to have an account.</em>
         <button mat-flat-button (click)="genPool()">Generate Pool</button>
+        <h2 *ngIf="(poolId != '')">Your Id: {{poolId}}</h2>
     </div>
 
     <!-- Access a Pool -->
     <div class="contentBox">
         <h1>Access Pool</h1>
         <label for="poolId">Your Pool Id</label>
-        <input type="number" [(ngModel)]="poolId" name="poolId" id="poolId" placeholder="Ex. 1231415" >
+        <input type="text" [(ngModel)]="poolId" name="poolId" id="poolId" placeholder="Ex. 1231415" >
         <button mat-flat-button (click)="poolIdAuth()">Submit</button>
     </div>
     

@@ -35,6 +35,7 @@
 }
 
 .contentBox button{
+    justify-self: center;
     background-color: #CC704B;
 }
 

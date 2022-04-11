@@ -1,5 +1,11 @@
 <div class="dashContainer">
-    <h1>Dashboard</h1>
-    <hr>
-    <p>Test</p>
+    <h1>Dashboard for Pool: {{poolId}}</h1>
+    <hr style="width:100%;text-align:left;margin-left:0">
+
+    <h2>Buyer:               <input type="text" [(ngModel)]="buyer"></h2>
+    <h2>Seller:              <input type="text" [(ngModel)]="seller"></h2>        
+    <h2>Dollars in Pool:     <input type="number" [(ngModel)]="poolPrice"></h2>    
+
+    <button mat-flat-button (click)="save()">Save</button>
+
 </div>

@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  poolId:Number=0;
+  buyer:String ='';
+  seller:String='';
+  poolPrice:Number=0;
 
   constructor() { }
 
-  ngOnInit(): void {
+  save(): void{
+
   }
 
+  ngOnInit(): void {
+    // Attempt to resolve data for the pool
+  }
 }

@@ -8,3 +8,15 @@
     border-radius: 1em;
     padding: 1em;
 }
+
+.dashContainer input{
+    width: 20vmin;
+    height: 3vmin;
+}
+
+.dashContainer button{
+    width: 20vmin;
+    justify-self: center;
+    align-self: center;
+    background-color: #CC704B;
+}
