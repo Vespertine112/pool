@@ -33,6 +33,14 @@ export class PoolGenService {
     )
   }
 
+  retrievePool(id:string):Observable<string> {
+    return this.http.get<string>(`${this.genUrl}?retrieve=${id}`, this.httpOptions).pipe(
+      tap(_ => {
+        console.log(`Received response from information service`);
+      })
+    )
+  }
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

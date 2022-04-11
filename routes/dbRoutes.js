@@ -30,17 +30,29 @@ router.post('/', async (req, res)=> {
 router.get('/', async (req, res) => {
     // Check for validation param
     let exists = req.query.exists;
+    let retrieve = req.query.retrieve;
     console.log(exists);
     if (exists){
         try {
             await client.connect();
             const result = await client.db("pooldb").collection("pools").findOne({_id: ObjectId(`${exists}`)});
-            console.log(result)
+            console.log(result);
             console.log(`Existence Confirmed ${result}`);
-            return res.json({status: "WORKING"})
+            return res.json({status: "WORKING"});
         } catch (error) {
             console.log("Existence check failed");
-            return res.json({status:"FAILED"})
+            return res.json({status:"FAILED"});
+        }
+    } else if (retrieve){
+        try {
+            await client.connect();
+            const result = await client.db("pooldb").collection("pools").findOne({_id: ObjectId(`${retrieve}`)});
+            console.log(result);
+            console.log(`Retrieval Confirmed`);
+            return res.json(result);
+        } catch (error) {
+            console.log("Retrieval failed");
+            return res.json({status:"FAILED"});
         }
     }
 
