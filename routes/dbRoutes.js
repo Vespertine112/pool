@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const cli = require('nodemon/lib/cli');
 
 const uri = "mongodb+srv://Demo:mongoose@cluster0.cnl0f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -8,8 +9,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 // Create
 router.post('/', async (req, res)=> {
-    // req.body.property
-
     try {
         await client.connect();
 
@@ -17,25 +16,54 @@ router.post('/', async (req, res)=> {
 
         const result = await client.db("pooldb").collection("pools").insertOne(newPool);
         console.log("new listing created with id:" + result.insertedId)
-        return res.status(201).json({id: `${result.insertedId}`})
+        // This notes that the creation was successful.
+        return res.status(201).json({id: `${result.insertedId}`, status:"WORKING"})
     } catch (error) {
         console.error(error);
         await client.close();
-        return res.status(500).json({id: "FAILED"})
+        return res.status(500).json({id: "", status:"FAILED"})
     }
-
-    // This notes that the creation was successful.
 
 });
 
 // Read
 router.get('/', async (req, res) => {
-    res.send('hello world');
+    // Check for validation param
+    let exists = req.query.exists;
+    console.log(exists);
+    if (exists){
+        try {
+            await client.connect();
+            const result = await client.db("pooldb").collection("pools").findOne({_id: ObjectId(`${exists}`)});
+            console.log(result)
+            console.log(`Existence Confirmed ${result}`);
+            return res.json({status: "WORKING"})
+        } catch (error) {
+            console.log("Existence check failed");
+            return res.json({status:"FAILED"})
+        }
+    }
+
 });
 
 // Update
 router.patch('/', async (req, res)=>{
+    // req.body.property
+    try {
+        await client.connect();
 
+        const result = await client.db("pooldb").collection("pools").updateOne({_id: ObjectId(req.body._id)},{$set:{buyer: req.body.buyer, seller: req.body.seller, price: req.body.price}});
+        if (result.acknowledged == true){
+            // This notes that the creation was successful.
+            console.log(`poolPrice: ${req.body.price}`) 
+            console.log("Update Complete on pool")
+        }
+        return res.status(201).json({id: `${result.insertedId}`, status:"WORKING"})
+    } catch (error) {
+        console.error(error);
+        await client.close();
+        return res.status(500).json({id: "", status:"FAILED"})
+    }
 });
 
 // Delete

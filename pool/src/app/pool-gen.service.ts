@@ -17,6 +17,22 @@ export class PoolGenService {
       }));
   }
 
+  validatePool(id:string):Observable<string> {
+    return this.http.get<string>(`${this.genUrl}?exists=${id}`, this.httpOptions).pipe(
+      tap(_ => {
+        console.log(`Received response from validation service`);
+      })
+    )
+  }
+
+  updatePool(poolObj:{}):Observable<string> {
+    return this.http.patch<string>(this.genUrl, poolObj, this.httpOptions).pipe(
+      tap(_ => {
+        console.log(`Update Confirmed`)
+      })
+    )
+  }
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

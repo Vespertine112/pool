@@ -10,9 +10,9 @@ import { PoolGenService } from '../pool-gen.service';
 })
 export class LoginMainComponent implements OnInit {
 
-  email:String = '';
-  password:String ='';
-  poolId:String = '';
+  email:string = '';
+  password:string ='';
+  poolId:string = '';
 
   constructor(
     private location:Location,
@@ -21,11 +21,16 @@ export class LoginMainComponent implements OnInit {
   ) { }
   
   poolIdAuth():void{
-    console.log("poolIdAuth working" +this.poolId);
-    // Fake Auth
-    if (this.poolId === '123'){
-      this.router.navigate(['/dashboard'], {queryParams: {poolId:`${this.poolId}`}});
-    }
+    this.poolGenerator.validatePool(this.poolId)
+      .subscribe(json => {
+        let resp = JSON.parse(JSON.stringify(json));
+        if (resp.status == "FAILED"){
+          alert("That is not a valid pool Id");
+        } else {
+          this.router.navigate(['/dashboard'], {queryParams: {poolId:`${this.poolId}`}});
+        }
+      }
+    )
   }
 
   login():void {
@@ -35,9 +40,12 @@ export class LoginMainComponent implements OnInit {
   genPool():void{
     this.poolGenerator.generatePool()
       .subscribe( json => {
-        console.log(`Pool id received in login component`)
-        let id = JSON.parse(JSON.stringify(json));
-        this.poolId = id.id;
+        let resp = JSON.parse(JSON.stringify(json));
+        if (resp.status == "FAILED"){
+          alert("Whoops! That didn't work. Please try again!")
+        } else {
+          this.poolId = resp.id;
+        }
       })
   }
 
