@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { PoolGenService } from '../pool-gen.service';
 
@@ -15,7 +14,6 @@ export class LoginMainComponent implements OnInit {
   poolId:string = '';
 
   constructor(
-    private location:Location,
     private router:Router,
     private poolGenerator: PoolGenService,
   ) { }
@@ -34,7 +32,7 @@ export class LoginMainComponent implements OnInit {
   }
 
   login():void {
-    console.log("loginbuttnworking" + this.password + this.email);
+    console.log(`login button working ${this.email}`);
   }
 
   genPool():void{

@@ -15,9 +15,9 @@ router.post('/', async (req, res)=> {
         newPool = {};
 
         const result = await client.db("pooldb").collection("pools").insertOne(newPool);
-        console.log("new listing created with id:" + result.insertedId)
+        console.log("new listing created with id:" + result.insertedId);
         // This notes that the creation was successful.
-        return res.status(201).json({id: `${result.insertedId}`, status:"WORKING"})
+        return res.status(201).json({id: `${result.insertedId}`, status:"WORKING"});
     } catch (error) {
         console.error(error);
         await client.close();
@@ -67,14 +67,14 @@ router.patch('/', async (req, res)=>{
         const result = await client.db("pooldb").collection("pools").updateOne({_id: ObjectId(req.body._id)},{$set:{buyer: req.body.buyer, seller: req.body.seller, price: req.body.price}});
         if (result.acknowledged == true){
             // This notes that the creation was successful.
-            console.log(`poolPrice: ${req.body.price}`) 
-            console.log("Update Complete on pool")
+            console.log(`poolPrice: ${req.body.price}`) ;
+            console.log("Update Complete on pool");
         }
-        return res.status(201).json({id: `${result.insertedId}`, status:"WORKING"})
+        return res.status(201).json({id: `${result.insertedId}`, status:"WORKING"});
     } catch (error) {
         console.error(error);
         await client.close();
-        return res.status(500).json({id: "", status:"FAILED"})
+        return res.status(500).json({id: "", status:"FAILED"});
     }
 });
 

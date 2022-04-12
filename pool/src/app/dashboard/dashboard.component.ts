@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PoolGenService } from '../pool-gen.service';
-import { tap } from 'rxjs';
 
 
 @Component({
@@ -18,7 +16,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location,
     private poolGenerator: PoolGenService,
   ) { }
 
