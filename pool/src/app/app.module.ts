@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { HttpClientModule } from '@angular/common/http';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NavbarComponent,
     LoginMainComponent,
-    DashboardComponent
+    DashboardComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
