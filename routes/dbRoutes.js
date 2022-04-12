@@ -3,7 +3,7 @@ const router = express.Router();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const cli = require('nodemon/lib/cli');
 
-const uri = "mongodb+srv://Demo:mongoose@cluster0.cnl0f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Demo:{yourmongoinfo}";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 

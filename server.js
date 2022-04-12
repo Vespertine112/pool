@@ -5,8 +5,6 @@ const app = express();
 const port = 4000;
 const cors = require("cors");
 
-let mongopass = process.env.MONGOPASS;
-
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cors());
